@@ -33,5 +33,15 @@ app.post("/shortUrls", async(req,res) => {
     res.redirect("/")
 })
 
+app.get("/delete/:id", async (req,res) => {
+    await ShortUrl.findByIdAndDelete({_id:req.params.id})
+    try{
+        res.redirect('/')
+    }catch(e){
+        console.error(e)
+    }
+})
+
+
 
 app.listen (process.env.PORT || 3000, () => console.log("server is up and running successfully"))
