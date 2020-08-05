@@ -12,7 +12,7 @@ const db = require("./config/keys").MongoURI
 //Connect Mongo
 mongoose.connect(db, {useNewUrlParser:true, useUnifiedTopology: true })
 .then(()=> console.log("Mongoo DB Connected..."))
-.catch(err => console.log(err))
+.catch(err => console.error(err))
 
 app.get("/", async (req,res) => {
     const shortUrls = await ShortUrl.find()
